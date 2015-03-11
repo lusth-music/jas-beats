@@ -1,2 +1,5 @@
 *.rra
 *.wav
+*.x
+*.dSYM
+*.dSYM/*

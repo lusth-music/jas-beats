@@ -1,9 +1,7 @@
 #Place the names of all your tracks here (as RRA filenames)
 
- RRA = quickstart.rra
-PRRA = progression.rra
- SRRA = s-quickstart.rra
-SPRRA = s-progression.rra
+ RRA = guitar.rra piano.rra acoustic.rra
+SRRA = stereo.rra
 INCLUDE=/usr/local/include/songlib/
 LIB=/usr/local/lib/
 
@@ -18,20 +16,14 @@ all : $(RRA)
 mix.rra		: $(RRA)
 		rrafastmixer $(RRA) > mix.rra
 
-prog : $(PRRA)
-		rplay $(PRRA)
+play	: mix.rra
+		rplay mix.rra 
 
-play	: $(RRA)
-		rplay $(RRA)
+playguitar : guitar.rra
+		rplay guitar.rra
 
 playmix : mix.rra
 		rplay mix.rra
-
-s-quickstart.rra : quickstart.rra
-		rrastereo -r quickstart.rra s-quickstart.rra
-
-s-progression.rra : progression.rra
-		rrastereo -r progression.rra s-progression.rra
 
 playmaster:  $(SRRA)
 	rrafastmixer $(SRRA) | rramaster ! rplay
@@ -48,4 +40,5 @@ rraidentity : rraidentity.c
 .PHONY : clean
 
 clean :
-		rm -f $(RRA) $(SRRA) master.rra mix.rra master.mp3
+		rm -f $(RRA) $(SRRA) master.rra mix.rra master.mp3 *.x *.wav
+		rm -f -r *.x.dSYM
