@@ -1,6 +1,6 @@
 #Place the names of all your tracks here (as RRA filenames)
 
- RRA = guitar.rra piano.rra acoustic.rra
+ RRA = ocarina.rra
 SRRA = stereo.rra
 INCLUDE=/usr/local/include/songlib/
 LIB=/usr/local/lib/
@@ -16,11 +16,8 @@ all : $(RRA)
 mix.rra		: $(RRA)
 		rrafastmixer $(RRA) > mix.rra
 
-play	: mix.rra
-		rplay mix.rra 
-
-playguitar : guitar.rra
-		rplay guitar.rra
+play	: ocarina.rra
+		rplay ocarina.rra 
 
 playmix : mix.rra
 		rplay mix.rra
@@ -42,3 +39,6 @@ rraidentity : rraidentity.c
 clean :
 		rm -f $(RRA) $(SRRA) master.rra mix.rra master.mp3 *.x *.wav
 		rm -f -r *.x.dSYM
+
+install : ocarina.tgz
+	./ocarina_install.sh

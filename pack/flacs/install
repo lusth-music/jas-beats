@@ -1,0 +1,17 @@
+echo you may be asked for your local password ...
+TARGET=/usr/local/share/samples/ocarina/
+sudo mkdir -p $TARGET
+echo converting flac to rra...
+for i in note_a5.flac note_b5.flac note_c6.flac note_d5.flac note_d6.flac note_e5.flac note_e6.flac note_f5.flac; do
+    flac2rra $i
+    where=`dirname $i`
+    name=`basename $i .flac`
+    if [ $where = "." ]
+        then
+        sudo cp $name.rra $TARGET/
+    else
+        sudo mkdir -p $TARGET/$where
+        sudo cp $where/$name.rra $TARGET/$where/
+    fi
+    rm $i
+done
