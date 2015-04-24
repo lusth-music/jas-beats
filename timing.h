@@ -4,34 +4,45 @@
 #include "/usr/local/include/songlib/util.h"
 #include "/usr/local/include/songlib/songlib.h"
 
+void tempoChorus() {
+  setTempo(230);
+}
+
 void silentChorus() {
-  setTempo(350);
-  for(int i = 0; i<16; ++i){
-    rest(W);
-  }
+  rest(W*16);
+}
+
+void tempoIntro() {
+  setTempo(230);
 }
 
 void silentIntro() {
-  setTempo(300);
-  rest(W*2);
-  rest(W*3);
-  rest(W*2);
-  rest(W*3);
-  rest(W*2);
+  rest(W*20);
 }
+
+void tempoVerse() {
+  setTempo(230);
+}
+
 
 void silentVerse(){
-  setTempo(325);
-  //rest(W*16);
+  rest(W*24);
 }
 
+void tempoBridge(){
+  setTempo(180);
+}
+
+
 void silentBridge(){
-  setTempo(325);
-  //rest(W*10);
+  rest(W*16);
+}
+
+void tempoOutro() {
+  setTempo(230);
 }
 
 void silentOutro(){
-  setTempo(325);
-  rest(W*9);
+  rest(W);
 }
 

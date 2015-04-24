@@ -4,6 +4,7 @@
 #include "/usr/local/include/songlib/util.h"
 #include "/usr/local/include/songlib/songlib.h"
 #include "timing.h"
+#include "modes.h"
 
 #define dir "/usr/local/share/samples/guitar-acoustic/"
 #define base "melo_"
@@ -22,60 +23,71 @@ int end(){
 }
 
 void intro(int instrument, int octave){
+  amp
+  tempoIntro();
   silentIntro();
-  /*setTempo(300);
-  b(1,W*2,instrument,octave,   "x--",SX);
-  b(1,W,instrument,octave,   "-x-",  "--x",SX);
-  b(5,W,instrument,octave-1,"---x", "-x-",SX);
-  b(4,W,instrument,octave-1,"---x", "-x-",SX);
-  b(4,W*2,instrument,octave-1,"--x",SX);
-  b(6,W,instrument,octave-1, "x--", "-x-",SX);
-  b(6,W,instrument,octave-1, "x--", "--x",SX);
-  b(5,W,instrument,octave-1, "x--", "-x-",SX);
-  b(5,W*2,instrument,octave-1, "--x", "---",SX); /* */
+  //rest(W*12);
+  //c(mC,W,instrument,octave);
+  //rest(W);
+  //c(mF,W,instrument,octave);
+  //rest(W);
+  //c(mA,W,instrument,octave);
+  //rest(W);
+  //c(mG,W,instrument,octave);
+  //rest(W);
 }
 
 void verse(int instrument, int octave){
+  tempoVerse();
   silentVerse();
 }
 
 void chorus(int instrument, int octave){
-    setTempo(350);
-    b(1,W,instrument,octave,   "x--",  "x--",  "x--", "d--",SX);
-    b(1,W,instrument,octave,   "x--",  "x--",  "x--", "d--",SX);
-    b(5,W,instrument,octave-1,"---x", "---x", "--x-", "-x-",SX);
-    b(4,W,instrument,octave-1,"---x", "---x", "--x-", "-x-",SX);
-    b(6,W,instrument,octave-1, "x--",  "-x-", "---x", "-x-",SX);
-    b(6,W,instrument,octave-1, "x--",  "-x-",  "---", "--x",SX);
-    b(5,W,instrument,octave-1, "x--",  "x--",  "-x-", "-x-",SX);
-    b(5,W,instrument,octave-1, "--x",  "-x-",  "x--", "---",SX);
-
-    b(1,W,instrument,octave,   "x--",  "x--",  "x--", "d--",SX);
-    b(1,W,instrument,octave,   "x--",  "x--",  "x--", "d--",SX);
-    b(5,W,instrument,octave-1,"---x", "--x-", "-x--", "---",SX);
-    b(4,W,instrument,octave-1,"---x", "--x-", "-x--", "---",SX);
-    b(6,W,instrument,octave-1, "--x",  "-x-", "-x--", "-x-",SX);
-    b(6,W,instrument,octave-1, "--x",  "-x-", "-x--", "-x-",SX);
-    b(5,W,instrument,octave-1, "x--",  "-x-",  "--x", "---x",SX);
-    b(5,W,instrument,octave-1, "d--",  "-d-",  "--d", "---d",SX);
+  tempoChorus();
+  silentChorus();
 }
 
 void bridge(int instrument, int octave){
-  silentBridge();
+  tempoBridge();
+  amp
+  c(mC,W,instrument,octave);
+  rest(W);
+
+  quiet
+    rest(W);
+  //play(W,instrument,octave,D); //1h
+  //play(W,instrument,octave-1,B);
+    rest(W);
+  amp
+  cM(mC,W,instrument,octave);
+  rest(W);
+
+  quiet
+    rest(W);
+    rest(W);
+  //play(W,instrument,octave,D); //5
+  //play(W,instrument,octave,E); //6
+  amp
+  c(mA,W,instrument,octave-1); //7
+  rest(W); //7h
+
+  quiet
+    rest(W);
+  //play(W,instrument,octave-1,B); //8h
+    rest(W);
+  //play(W,instrument,octave,C); //9h
+  amp
+  c(mD,W,instrument,octave); //10h
+  rest(W); //11
+  //play(W,instrument,octave-1,A); //19
+  louder
+  c(mE,W,instrument,octave);
+  rest(W);
 }
 
 void outro(int instrument, int octave){
+  tempoOutro();
   silentOutro();
-  /*setTempo(325);
-  b(1,W,instrument,octave,   "x--", "--x", "-x-",SX); //1
-  b(1,W,instrument,octave, "--x", "---",SX); //5
-  b(4,W,instrument,octave-1, "x--", "-x-", "-x-",SX); //5
-  b(4,W,instrument,octave-1, "x--", "---",SX); //6
-  b(6,W,instrument,octave-1, "x--", "-x-", "-x-", SX); //6
-  b(6,W,instrument,octave-1,"--x", "---",SX); //4
-  b(5,W,instrument,octave-1,"--x", "-x-","x--",SX); //4
-  b(5,W*2,instrument,octave-1,"---x", "-x-",SX); //5
-  cpower2(1,W,instrument,octave);*/
 }
 
 
@@ -99,14 +111,7 @@ main()
     
     openOutput("guitar.rra",0,0);
 
-    intro(instrument,octave);
-    verse(instrument, octave);
-    chorus(instrument, octave);
-    verse(instrument, octave);
-    chorus(instrument, octave);
-    bridge(instrument, octave);
-    //chorus(instrument, octave);
-    outro(instrument, octave);
+#include "song.c"
 
     last = 1;
 

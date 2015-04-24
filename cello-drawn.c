@@ -6,28 +6,70 @@
 #include "timing.h"
 #include "modes.h"
 
-#define dir "/usr/local/share/samples/piano/piano-bright/"
-#define base "bright_"
+#define dir "/usr/local/share/samples/cello/"
+#define base "drawn_"
 
 /* change PROGRAM_NAME and PROGRAM_VERSION appropriately */
 
-char *PROGRAM_NAME = "piano";
+char *PROGRAM_NAME = "cello-drawn";
 char *PROGRAM_VERSION = "0.01";
 
 static int last = 0;
 
 void intro(int instrument, int octave){
   tempoIntro();
-  silentIntro();
+  rest(W*4);
+  n(mC,W,instrument,octave,0);
+  rest(W);
+  n(mF,W,instrument,octave,0);
+  rest(W);
+  n(mA,W,instrument,octave,0);
+  rest(W);
+  n(mG,W,instrument,octave,0);
+  rest(W);
+  c(mC,W,instrument,octave);
+  rest(W);
+  c(mF,W,instrument,octave);
+  rest(W);
+  c(mA,W,instrument,octave);
+  rest(W);
+  c(mG,W,instrument,octave);
+  rest(W);
 }
 
 void verse(int instrument, int octave){
   tempoVerse();
-  silentVerse();
+  //24
+  amp
+  n(mC,W,instrument,octave,0);
+  n(mF,W,instrument,octave-1,0);
+  n(mA,W,instrument,octave-1,0);
+  n(mG,W,instrument,octave-1,0);
+  n(mC,W,instrument,octave,0);
+  n(mF,W,instrument,octave-1,0);
+  n(mA,W,instrument,octave-1,0);
+  n(mG,W,instrument,octave-1,0);
+  n(mC,W,instrument,octave,0);
+  n(mF,W,instrument,octave-1,0);
+  n(mA,W,instrument,octave-1,0);
+  n(mG,W,instrument,octave-1,0);
+  n(mC,W,instrument,octave,0);
+  n(mF,W,instrument,octave-1,0);
+  n(mA,W,instrument,octave-1,0);
+  n(mG,W,instrument,octave-1,0);
+  n(mC,W,instrument,octave,0);
+  n(mF,W,instrument,octave-1,0);
+  n(mA,W,instrument,octave-1,0);
+  n(mG,W,instrument,octave-1,0);
+  n(mC,W,instrument,octave,0);
+  n(mF,W,instrument,octave-1,0);
+  n(mA,W,instrument,octave-1,0);
+  n(mG,W,instrument,octave-1,0);
 }
 
 void chorus(int instrument, int octave){
   tempoChorus();
+  amp
   play(W,instrument,octave,G);
   rest(W);
   play(W,instrument,octave,Bb);
@@ -108,7 +150,7 @@ main()
     setSustain(0.99995); //logarithmic scale
 
     
-    openOutput("piano.rra",0,0);
+    openOutput("cello-drawn.rra",0,0);
     amp
 
 #include "song.c"

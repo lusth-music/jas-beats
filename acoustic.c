@@ -4,6 +4,7 @@
 #include "/usr/local/include/songlib/util.h"
 #include "/usr/local/include/songlib/songlib.h"
 #include "timing.h"
+#include "modes.h"
 
 
 #define dir "/usr/local/share/samples/guitar-acoustic/"
@@ -17,61 +18,203 @@ char *PROGRAM_VERSION = "0.01";
 static int last = 0;
 
 void intro(int instrument, int octave){
-    //silentIntro();
-  setTempo(300);
-  b(1,W*2,instrument,octave,   "x--",SX);
-  b(1,W,instrument,octave,   "-x-",  "--x",SX);
-  b(5,W,instrument,octave-1,"---x", "-x-",SX);
-  b(4,W,instrument,octave-1,"---x", "-x-",SX);
-  b(4,W*2,instrument,octave-1,"--x",SX);
-  b(6,W,instrument,octave-1, "x--", "-x-",SX);
-  b(6,W,instrument,octave-1, "x--", "--x",SX);
-  b(5,W,instrument,octave-1, "x--", "-x-",SX);
-  b(5,W*2,instrument,octave-1, "--x", "---",SX);
+  setAmplitude(minvolume/2);
+  tempoIntro();
+  //silentIntro();
+  rest(W*12);
+  n(mC,Q,instrument,octave,0);
+  n(mC,Q,instrument,octave,1);
+  n(mC,Q,instrument,octave,4);
+  n(mC,Q,instrument,octave,1);
+
+  //n(mC,Q,instrument,octave,0);
+  //n(mC,Q,instrument,octave,1);
+  //n(mC,Q,instrument,octave,4);
+  //n(mC,Q,instrument,octave,1);
+
+  rest(W);
+
+  n(mF,Q,instrument,octave,0);
+  n(mF,Q,instrument,octave,1);
+  n(mF,Q,instrument,octave,4);
+  n(mF,Q,instrument,octave,1);
+
+  //n(mF,Q,instrument,octave,0);
+  //n(mF,Q,instrument,octave,1);
+  //n(mF,Q,instrument,octave,4);
+  //n(mF,Q,instrument,octave,1);
+
+  rest(W);
+
+  n(mA,Q,instrument,octave,0);
+  n(mA,Q,instrument,octave,1);
+  n(mA,Q,instrument,octave,4);
+  n(mA,Q,instrument,octave,1);
+  
+  //n(mA,Q,instrument,octave,0);
+  //n(mA,Q,instrument,octave,1);
+  //n(mA,Q,instrument,octave,4);
+  //n(mA,Q,instrument,octave,1);
+
+  rest(W);
+
+  n(mG,Q,instrument,octave,0);
+  n(mG,Q,instrument,octave,1);
+  n(mG,Q,instrument,octave,4);
+  n(mG,Q,instrument,octave,0);
+  
+  //n(mG,Q,instrument,octave,0);
+  //n(mG,Q,instrument,octave,1);
+  //n(mG,Q,instrument,octave,4);
+  //n(mG,Q,instrument,octave,0);
+  
+  rest(W);
 }
 
 void verse(int instrument, int octave){
-    silentVerse();
+  tempoVerse();
+  quiet
+
+  n(mC,Q,instrument,octave,0);
+  n(mC,Q,instrument,octave,1);
+  n(mC,Q,instrument,octave,4);
+  n(mC,Q,instrument,octave,1);
+
+  n(mF,Q,instrument,octave,0);
+  n(mF,Q,instrument,octave,1);
+  n(mF,Q,instrument,octave,4);
+  n(mF,Q,instrument,octave,1);
+
+  n(mA,Q,instrument,octave,0);
+  n(mA,Q,instrument,octave,1);
+  n(mA,Q,instrument,octave,4);
+  n(mA,Q,instrument,octave,1);
+
+  n(mG,Q,instrument,octave,0);
+  n(mG,Q,instrument,octave,1);
+  n(mG,Q,instrument,octave,4);
+  n(mG,Q,instrument,octave,0);
+
+
+  n(mC,Q,instrument,octave,0);
+  n(mC,Q,instrument,octave,1);
+  n(mC,Q,instrument,octave,2);
+  n(mC,Q,instrument,octave,4);
+
+  n(mF,Q,instrument,octave,0);
+  n(mF,Q,instrument,octave,1);
+  n(mF,Q,instrument,octave,2);
+  n(mF,Q,instrument,octave,4);
+
+  n(mA,Q,instrument,octave,0);
+  n(mA,Q,instrument,octave,1);
+  n(mA,Q,instrument,octave,3);
+  n(mA,Q,instrument,octave,4);
+
+  n(mG,Q,instrument,octave,0);
+  n(mG,Q,instrument,octave,1);
+  n(mG,Q,instrument,octave,2);
+  n(mG,Q,instrument,octave,4);
+
+
+  n(mC,Q,instrument,octave-1,0);
+  n(mC,Q,instrument,octave-1,1);
+  n(mC,Q,instrument,octave-1,4);
+  n(mC,Q,instrument,octave-1,1);
+
+  n(mF,Q,instrument,octave-1,0);
+  n(mF,Q,instrument,octave-1,1);
+  n(mF,Q,instrument,octave-1,4);
+  n(mF,Q,instrument,octave-1,1);
+
+  n(mA,Q,instrument,octave-1,0);
+  n(mA,Q,instrument,octave-1,1);
+  n(mA,Q,instrument,octave-1,4);
+  n(mA,Q,instrument,octave-1,1);
+
+  n(mG,Q,instrument,octave-1,0);
+  n(mG,Q,instrument,octave-1,1);
+  n(mG,Q,instrument,octave-1,4);
+  n(mG,Q,instrument,octave-1,1);
+
+
+  n(mC,Q,instrument,octave-1,0);
+  n(mC,Q,instrument,octave-1,1);
+  n(mC,Q,instrument,octave-1,2);
+  n(mC,Q,instrument,octave-1,4);
+
+  n(mF,Q,instrument,octave-1,0);
+  n(mF,Q,instrument,octave-1,1);
+  n(mF,Q,instrument,octave-1,2);
+  n(mF,Q,instrument,octave-1,4);
+
+  n(mA,Q,instrument,octave-1,0);
+  n(mA,Q,instrument,octave-1,1);
+  n(mA,Q,instrument,octave-1,2);
+  n(mA,Q,instrument,octave-1,4);
+
+  n(mG,Q,instrument,octave-1,0);
+  n(mG,Q,instrument,octave-1,1);
+  n(mG,Q,instrument,octave-1,2);
+  n(mG,Q,instrument,octave-1,4);
+
+
+  n(mC,Q,instrument,octave,0);
+  n(mC,Q,instrument,octave,1);
+  n(mC,Q,instrument,octave,4);
+  n(mC,Q,instrument,octave,1);
+
+  n(mF,Q,instrument,octave,0);
+  n(mF,Q,instrument,octave,1);
+  n(mF,Q,instrument,octave,4);
+  n(mF,Q,instrument,octave,1);
+
+  n(mA,Q,instrument,octave,0);
+  n(mA,Q,instrument,octave,1);
+  n(mA,Q,instrument,octave,4);
+  n(mA,Q,instrument,octave,1);
+
+  n(mG,Q,instrument,octave,0);
+  n(mG,Q,instrument,octave,1);
+  n(mG,Q,instrument,octave,4);
+  n(mG,Q,instrument,octave,1);
+
+
+  n(mC,Q,instrument,octave,0);
+  n(mC,Q,instrument,octave,1);
+  n(mC,Q,instrument,octave,4);
+  n(mC,Q,instrument,octave,2);
+
+  n(mF,Q,instrument,octave,0);
+  n(mF,Q,instrument,octave,1);
+  n(mF,Q,instrument,octave,4);
+  n(mF,Q,instrument,octave,2);
+
+  n(mA,Q,instrument,octave,0);
+  n(mA,Q,instrument,octave,1);
+  n(mA,Q,instrument,octave,4);
+  n(mA,Q,instrument,octave,3);
+
+  n(mG,Q,instrument,octave,0);
+  n(mG,Q,instrument,octave,1);
+  n(mG,Q,instrument,octave,4);
+  n(mG,Q,instrument,octave,0);
+
 }
 
 void chorus(int instrument, int octave){
-    //silentChorus();
-    setTempo(350);
-    b(1,W,instrument,octave,   "x--",  "x--",  "x--", "d--",SX);
-    b(1,W,instrument,octave,   "x--",  "x--",  "x--", "d--",SX);
-    b(5,W,instrument,octave-1,"---x", "---x", "--x-", "-x-",SX);
-    b(4,W,instrument,octave-1,"---x", "---x", "--x-", "-x-",SX);
-    b(6,W,instrument,octave-1, "x--",  "-x-", "---x", "-x-",SX);
-    b(6,W,instrument,octave-1, "x--",  "-x-",  "---", "--x",SX);
-    b(5,W,instrument,octave-1, "x--",  "x--",  "-x-", "-x-",SX);
-    b(5,W,instrument,octave-1, "--x",  "-x-",  "x--", "---",SX);
-
-    b(1,W,instrument,octave,   "x--",  "x--",  "x--", "d--",SX);
-    b(1,W,instrument,octave,   "x--",  "x--",  "x--", "d--",SX);
-    b(5,W,instrument,octave-1,"---x", "--x-", "-x--", "---",SX);
-    b(4,W,instrument,octave-1,"---x", "--x-", "-x--", "---",SX);
-    b(6,W,instrument,octave-1, "--x",  "-x-", "-x--", "-x-",SX);
-    b(6,W,instrument,octave-1, "--x",  "-x-", "-x--", "-x-",SX);
-    b(5,W,instrument,octave-1, "x--",  "-x-",  "--x", "---x",SX);
-    b(5,W,instrument,octave-1, "d--",  "-d-",  "--d", "---d",SX);
+    tempoChorus();
+    silentChorus();
 }
 
 void bridge(int instrument, int octave){
-    silentBridge();
+  tempoBridge();
+  silentBridge();
 }
 
 void outro(int instrument, int octave){
-    //silentOutro();
-  setTempo(325);
-  b(1,W,instrument,octave,   "x--", "--x", "-x-",SX); //1
-  b(1,W,instrument,octave, "--x", "---",SX); //5
-  b(4,W,instrument,octave-1, "x--", "-x-", "-x-",SX); //5
-  b(4,W,instrument,octave-1, "x--", "---",SX); //6
-  b(6,W,instrument,octave-1, "x--", "-x-", "-x-", SX); //6
-  b(6,W,instrument,octave-1,"--x", "---",SX); //4
-  b(5,W,instrument,octave-1,"--x", "-x-","x--",SX); //4
-  b(5,W,instrument,octave-1,"---x", "-x-",SX); //5
-  cpower2(1,W,instrument,octave);
+  tempoOutro();
+  silentOutro();
 }
 
 int
@@ -92,14 +235,7 @@ main()
 
     openOutput("acoustic.rra",0,0);
 
-    intro(instrument, octave );
-    verse(instrument, octave );
-    chorus(instrument, octave );
-    verse(instrument, octave );
-    chorus(instrument, octave );
-    bridge(instrument, octave );
-    //chorus(instrument, octave );
-    outro(instrument, octave );
+#include "song.c"
 
     last = 1;
 
